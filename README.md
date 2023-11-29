@@ -30,11 +30,11 @@
 |  Configuration path/key    | Value             |
 | -------------------------  | ----------------  |
 mps:env | Value defined by Environment "**microservice_environment**", default value is **dev** |
-mps:msname    | Micorservice name. Value defined by Assembly "AssemblyProductAttribute" attribute or via "MpsRuntimeConfigurationOptions"  |
-mps:docker    | "true" is runs in doecker container |
+mps:msname    | Microservice name. Value defined by Assembly "AssemblyProductAttribute" attribute or via "MpsRuntimeConfigurationOptions"  |
+mps:docker    | "true" is runs in docker container |
 mps:host      | Value of environment "MachineName"  |
-mps:bus       | Service busname the mps:env value or mps:host  |
-mps:linux     | "true" when run on kinux |
+mps:bus       | Service bus name either the mps:env value or mps:host  |
+mps:linux     | "true" when run on linux |
 
 
 ### Project Customization 
@@ -75,7 +75,7 @@ public class MpsRuntimeConfigurationOptions
 **the BEST - Or Create own vision of the configuration provider locally**.
 
 
-### Enterprice Configuration Integrations 
+### Enterprise Configuration Integrations  
 
 **DotNetCore.Mps.Runtime** - expected to use with 
 DotNetCore Generic Configuration ie.e **DotNetCore.Configuration.Formatter** creates a new configuration values by substituting IConfiguration Keys with Values from other IConfiguration Keys.
