@@ -7,7 +7,7 @@
 
 - Nuget package [DotNetCore.Mps.Runtime](https://www.nuget.org/packages/DotNetCore.Mps.Runtime/)
 
-### Version: 8.0.0
+### Version: 8.0.x
 - supports **netstandard2.0/2.1** ; **net8.0**
 
 
@@ -18,10 +18,19 @@
       // Adds Runtime Configuration
        builder.Configuration.AddMpsRuntimeWithMicroServiceName(typeof(Program).Assembly);
 ```
+or with exact microservice name.
+``` csharp
+
+      // Adds Runtime Configuration
+       builder.Configuration.AddMpsRuntimeWithMicroServiceName(microserviceName: "MyMicroserviceName");
+```
+
+
 ### Get MpsRuntime class object
 
 ``` csharp
      MpsRuntime mpsRuntime = builder.Configuration.GetSection(nameof(MpsRuntime)).Get<MpsRuntime>();
+     builder.Services.AddSingleton(mpsRuntime);
 ```
 
 
@@ -29,15 +38,15 @@
 
 |  Configuration path/key    | Value             |
 | -------------------------  | ----------------  |
-mps:env | Value defined by Environment "**microservice_environment**", default value is **dev** |
-mps:msname    | Microservice name. Value defined by Assembly "AssemblyProductAttribute" attribute or via "MpsRuntimeConfigurationOptions"  |
+mps:env | Value defined by Environment **microservice_environment**, default value is **dev** |
+mps:msname    | Microservice name. Value defined by Assembly "*AssemblyProductAttribute*" attribute or via "MpsRuntimeConfigurationOptions"  |
 mps:docker    | "true" is runs in docker container |
 mps:host      | Value of environment "MachineName"  |
 mps:bus       | Service bus name either the mps:env value or mps:host  |
 mps:linux     | "true" when run on linux |
 
 
-### Project Customization 
+### Runtime Customization 
 
 Use configuration  
 ``` csharp
@@ -72,13 +81,21 @@ public class MpsRuntimeConfigurationOptions
 }
 ```
 
-**the BEST - Or Create own vision of the configuration provider locally**.
+### Runtime information logging
 
+``` csharp
+     MpsRuntime mpsRuntime = builder.Configuration.GetSection(nameof(MpsRuntime)).Get<MpsRuntime>();
+     builder.Services.AddSingleton(mpsRuntime);
+     builder.Services.AddHostedService<MpsLifetimeEventsHostedService>();
+```
 
 ### Enterprise Configuration Integrations  
 
-**DotNetCore.Mps.Runtime** - expected to use with 
-DotNetCore Generic Configuration ie.e **DotNetCore.Configuration.Formatter** creates a new configuration values by substituting IConfiguration Keys with Values from other IConfiguration Keys.
+**DotNetCore.Mps.Runtime** - can be used with *DotNetCore Generic Configuration*.
+
+**DotNetCore Generic Configuration** creates a new configuration values by substituting IConfiguration Keys with Values from other IConfiguration Keys.
+
+References:
 - Nuget package: [DotNetCore.Configuration.Formatter](https://www.nuget.org/packages/DotNetCore.Configuration.Formatter/)
 - GitHub project and examples: [DotNetCore Generic Configuration ](https://github.com/Wallsmedia/DotNetCore.Configuration.Formatter)
  

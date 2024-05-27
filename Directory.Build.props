@@ -3,7 +3,7 @@
 		<Product>DotNetCore Microservice Plalform Runtime Configuration</Product>
 		<Authors>Wallsmedia Ltd</Authors>
 		<Copyright>Copyright $([System.DateTime]::Now.ToString('yyyy')) © Artem &amp; Alex Paskhin. All rights reserved.</Copyright>
-		<Version>8.0.0</Version>
+		<Version>8.0.1</Version>
 	</PropertyGroup>
 
 	<PropertyGroup>
