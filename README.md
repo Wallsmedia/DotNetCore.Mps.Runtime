@@ -60,22 +60,22 @@ public class MpsRuntimeConfigurationOptions
 
     /// <summary>
     /// Set the valid list of configurations.
-    /// If it is not set the default list will be used 
+    /// The default list is  "sbx", "dev", "uat", "qat", "stg", "pdn", "prd" 
     /// </summary>
     public string[] ValidMpsConfigs { get; set; } = MpsRuntimeConfigurationProvider.ValidMpsConfigs;
 
     /// <summary>
-    /// A prefix used as name of the section  variables.
+    /// A microservice name. The default name is 'mps-microservice-api'.
     /// </summary>
     public string MicroserviceName { get; set; } = MpsRuntimeConfigurationProvider.DefaultMicroserviceName;
 
     /// <summary>
-    /// A prefix used as name of the section  variables.
+    /// A prefix used as name of the section  variables. The default value is 'mps'.
     /// </summary>
     public string Section { get; set; } = MpsRuntimeConfigurationProvider.DefaultSection;
 
     /// <summary>
-    /// A prefix used as name of the section  variables.
+    /// An environment name. The default name is 'microservice_environment'.
     /// </summary>
     public string MpsEnvironmentName { get; set; } = MpsRuntimeConfigurationProvider.EnvMpsEnvironment;
 }
