@@ -7,8 +7,8 @@
 
 - Nuget package [DotNetCore.Mps.Runtime](https://www.nuget.org/packages/DotNetCore.Mps.Runtime/)
 
-### Version: 9.0.x
-- supports **netstandard2.0/2.1** ; **net9.0**
+### Version: 10.0.1xx
+- supports **netstandard2.0/2.1** ; **net10.0**
 
 
 ### Setup in the project
