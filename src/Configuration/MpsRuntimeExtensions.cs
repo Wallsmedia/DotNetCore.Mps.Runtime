@@ -82,7 +82,7 @@ public static class MpsRuntimeExtensions
     /// <summary>
     /// Adds an <see cref="IConfigurationProvider"/> that reads configuration runtime values from environment variables.
     /// </summary>
-    /// <param name="builder">The <see cref="IConfigurationBuilder"/> to add to.</param>
+    /// <param name="configurationBuilder">The <see cref="IConfigurationBuilder"/> to add to.</param>
     /// <param name="configureSource">Configures the source.</param>
     /// <returns>The <see cref="IConfigurationBuilder"/>.</returns>
     public static IConfigurationBuilder AddMpsRuntime(this IConfigurationBuilder configurationBuilder, Action<MpsRuntimeConfigurationOptions> configureSource)

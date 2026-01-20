@@ -14,9 +14,7 @@ using System.Threading.Tasks;
 namespace DotNetCore.Mps.Runtime.Configuration;
 
 public class MpsLifetimeEventsHostedService : IHostedService
-#if NET8_0_OR_GREATER
     , IHostedLifecycleService
-#endif 
 {
     private readonly MpsRuntime _mpsRuntime;
     private readonly ILogger _logger;
@@ -32,6 +30,7 @@ public class MpsLifetimeEventsHostedService : IHostedService
         _appLifetime = appLifetime;
     }
 
+    /// <inheritdoc/>
     public Task StartAsync(CancellationToken cancellationToken)
     {
         _appLifetime.ApplicationStarted.Register(OnStarted);
@@ -41,6 +40,7 @@ public class MpsLifetimeEventsHostedService : IHostedService
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task StopAsync(CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
@@ -65,24 +65,28 @@ public class MpsLifetimeEventsHostedService : IHostedService
         _logger.LogInformation($"ApplicationStopped - ServiceName: '{_mpsRuntime.MicroserviceName}'");
     }
 
+    /// <inheritdoc/>
     public Task StartedAsync(CancellationToken cancellationToken)
     {
         _logger.LogInformation($"LifetimeEventsHostedService - StartedAsync: '{_mpsRuntime.MicroserviceName}'");
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task StartingAsync(CancellationToken cancellationToken)
     {
         _logger.LogInformation($"LifetimeEventsHostedService - StartingAsync: '{_mpsRuntime.MicroserviceName}'");
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task StoppedAsync(CancellationToken cancellationToken)
     {
         _logger.LogInformation($"LifetimeEventsHostedService - StoppedAsync: '{_mpsRuntime.MicroserviceName}'");
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc/>
     public Task StoppingAsync(CancellationToken cancellationToken)
     {
         _logger.LogInformation($"LifetimeEventsHostedService - StoppingAsync: '{_mpsRuntime.MicroserviceName}'");

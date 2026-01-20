@@ -51,7 +51,6 @@ public class MpsRuntime
     /// </summary>
     public string ServiceBusName { get; set; }
 
-
     /// <summary>
     /// Gets the flag true if it's running  in Linux OS
     /// </summary>
